@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 void main() {
   runApp(Application());
@@ -35,31 +36,55 @@ Widget getApplication() {
 Widget bodyLayout() {
   return Column(
     children: [
-      buttonRows(child1: Text('press'), child2: Text('press')),
-      buttonRows(child1: Text('press'), child2: Text('press')),
-      buttonRows(child1: Text('press'), child2: Text('press'))
+      buttonRows(
+        child1: Text('press'),
+        child2: Text('press'),
+        sound1: 'assets_c1.wav',
+        sound2: 'assets_c2.wav',
+      ),
+      buttonRows(
+        child1: Text('press'),
+        child2: Text('press'),
+        sound1: 'assets_h1.wav',
+        sound2: 'assets_h2.wav',
+      ),
+      buttonRows(
+        child1: Text('press'),
+        child2: Text('press'),
+        sound1: 'assets_k1.wav',
+        sound2: 'assets_k2.wav',
+      )
     ],
   );
 }
 
-Widget buttonRows({child1, child2}) {
+Widget buttonRows({child1, child2, sound1, sound2}) {
   return Expanded(
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              playSound(sound1);
+            },
             child: child1,
           ),
         ),
         Expanded(
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              playSound(sound2);
+            },
             child: child2,
           ),
         ),
       ],
     ),
   );
+}
+
+void playSound(soundFile) {
+  var player = AudioCache(prefix: 'assets/');
+  player.play(soundFile);
 }
