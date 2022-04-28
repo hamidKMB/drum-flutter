@@ -16,26 +16,50 @@ class Application extends StatelessWidget {
 Widget getApplication() {
   return MaterialApp(
     home: Scaffold(
-      backgroundColor: Colors.blue[600],
+      backgroundColor: Colors.amber[600],
       body: SafeArea(
         child: DecoratedBox(
-          position: DecorationPosition.background,
-          child: Center(
-            child: Container(
-              width: 50.0,
-              height: 50.0,
-              margin: EdgeInsets.all(5.0),
+            position: DecorationPosition.background,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('images/drum.png'),
+                fit: BoxFit.fitWidth,
+              ),
             ),
-          ),
-          decoration: BoxDecoration(
-            color: Colors.black87,
-            image: DecorationImage(
-              image: AssetImage('images/drum.png'),
-              fit: BoxFit.fitWidth,
-            ),
+            child: bodyLayout()),
+      ),
+    ),
+  );
+}
+
+Widget bodyLayout() {
+  return Column(
+    children: [
+      buttonRows(child1: Text('press'), child2: Text('press')),
+      buttonRows(child1: Text('press'), child2: Text('press')),
+      buttonRows(child1: Text('press'), child2: Text('press'))
+    ],
+  );
+}
+
+Widget buttonRows({child1, child2}) {
+  return Expanded(
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Expanded(
+          child: TextButton(
+            onPressed: () {},
+            child: child1,
           ),
         ),
-      ),
+        Expanded(
+          child: TextButton(
+            onPressed: () {},
+            child: child2,
+          ),
+        ),
+      ],
     ),
   );
 }
