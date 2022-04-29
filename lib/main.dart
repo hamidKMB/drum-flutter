@@ -20,14 +20,15 @@ Widget getApplication() {
       backgroundColor: Colors.amber[600],
       body: SafeArea(
         child: DecoratedBox(
-            position: DecorationPosition.background,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('images/drum.png'),
-                fit: BoxFit.fitWidth,
-              ),
+          position: DecorationPosition.background,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/drum.png'),
+              fit: BoxFit.fitWidth,
             ),
-            child: bodyLayout()),
+          ),
+          child: bodyLayout(),
+        ),
       ),
     ),
   );
